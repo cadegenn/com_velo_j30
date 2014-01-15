@@ -1,0 +1,74 @@
+/* 
+    Document   : com_apl
+    Created on : 15 sept. 2012, 19:35:40
+    Author     : charly
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.icon-32-import {
+	background-image: url(../images/ico-128x128/import-icon.png);
+	background-size: 32px;
+}
+.icon-48-categories, .icon-48-velo {
+	background-image: url(../images/ico-48x48/monVelo.png);
+}
+.favicon {
+	width: 16px;
+	/*float: left;*/
+	vertical-align: middle;
+	margin: 0 5px 0 0;
+}
+.img_small_preview {
+	/*max-width: 40px;*/
+	max-height: 30px;
+	margin: 0 0 0 5px;
+}
+.img_large_preview {
+	/*max-width: 40px;*/
+	max-height: 128px;
+	margin: 10px;
+}
+
+.blue {
+	color: navy;
+}
+
+.fltrt > ul {
+	display: table-row;
+	margin:0;
+	padding:0;
+}
+.fltrt > ul > li {
+	display: table-cell;
+	border-left: honeyDew solid 1px;
+	border-right: honeyDew solid 1px;
+	margin:0;
+	padding:0;
+}
+.fltrt > ul > li > a {
+	display: block;
+	padding: 0 8px;
+	font-family: "Courier New", Courier, monospace ! important;
+	font-weight: bold;
+	font-size: 14px;
+}
+.fltrt > ul > li > a:hover {
+	background-color: white;
+	color: navy;
+	text-decoration: none;
+}
+
+/**
+ * @brief	instant_help petits encarts affichant une aide rapide et instantanée
+ */
+.instant_help {
+	/*margin: 2px;
+	background-color: silver;
+	border: 1px silver dotted;*/
+	color: darkgrey;
+}

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<!-- monVélo -->
+	<fieldset addfieldpath="/administrator/components/com_velo/models/fields">
+		<field
+			id="id"	name="id" type="hidden"
+			label="COM_CONTENT_ID_LABEL"
+			class="inputbox" default="0" readonly="true"
+		/>
+		<field
+			name="label" type="text"
+			label="COM_VELO_LABEL_LABEL" description="COM_VELO_LABEL_DESC"
+			class="inputbox" default=""
+		/>
+		<field
+			name="owner" type="text"
+			label="COM_VELO_OWNER_LABEL" description="COM_VELO_OWNER_DESC"
+			class="inputbox" default=""
+		/>
+		<field
+			name="bicycode" type="text"
+			label="COM_VELO_BICYCODE_LABEL" description="COM_VELO_BICYCODE_DESC"
+			class="inputbox" default=""
+		/>
+		<field
+			name="type_id" type="type"
+			label="COM_VELO_TYPE_LABEL" description="COM_VELO_TYPE_DESC"
+			class="inputbox" default=""
+		/>
+	</fieldset>
+	<!-- monComposant -->
+	<fieldset addfieldpath="/administrator/components/com_velo/models/fields">
+		<field
+			id="id"	name="id" type="hidden"
+			label="COM_CONTENT_ID_LABEL"
+			class="inputbox" default="0" readonly="true"
+		/>
+		<field
+			name="created_by" type="user"
+			label="JGLOBAL_FIELD_CREATED_BY_LABEL" description="JGLOBAL_FIELD_CREATED_BY_DESC"
+			class="inputbox" readonly="false"
+		/>
+		<field
+			name="creation_date" type="calendar"
+			label="JGLOBAL_CREATED_DATE" description="JGLOBAL_FIELD_CREATED_DESC"
+			class="date" readonly="false"
+		/>
+		<field
+			name="modification_date" type="calendar"
+			label="JGLOBAL_FIELD_MODIFIED_LABEL" description="JGLOBAL_FIELD_MODIFIED_DESC"
+			class="date" readonly="false"
+		/>
+		<field
+			name="modified_by" type="user"
+			label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" description="JGLOBAL_FIELD_MODIFIED_BY_DESC"
+			class="inputbox" readonly="false"
+		/>
+		<field
+			name="model_id" type="part"
+			label="COM_VELO_PART_LABEL" description="COM_VELO_PART_DESC"
+			size="1" default=""
+			class="inputbox required" readonly="false" required="true"
+			button_add="true" filter="!bike"
+		/>
+		<field
+			name="velo_id" type="velo"
+			label="COM_VELO_VELO_LABEL" description="COM_VELO_VELO_DESC"
+			class="inputbox required" readonly="false" required="true"
+			size="1" default="" filter="owner"
+		/>
+		<!-- TODOformat="%d %B %Y"-->
+		<field
+			name="date_achat" type="calendar"
+			label="COM_VELO_DATE_ACHAT_LABEL" description="COM_VELO_DATE_ACHAT_DESC"
+			format="%Y-%m-%d"
+			class="date" readonly="false"
+		/>
+		<field
+			name="prix_achat" type="text"
+			label="COM_VELO_PRIX_ACHAT_LABEL" description="COM_VELO_PRIX_ACHAT_DESC"
+			class="inputbox" readonly="false"
+		/>
+		<field
+			name="distance_achat" type="text"
+			label="COM_VELO_DISTANCE_ACHAT_LABEL" description="COM_VELO_DISTANCE_ACHAT_DESC"
+			class="inputbox" readonly="false"
+		/>
+		<field
+			name="date_vente" type="calendar"
+			label="COM_VELO_DATE_VENTE_LABEL" description="COM_VELO_DATE_VENTE_DESC"
+			format="%Y-%m-%d"
+			class="date" readonly="false"
+		/>
+		<field
+			name="prix_vente" type="text"
+			label="COM_VELO_PRIX_VENTE_LABEL" description="COM_VELO_PRIX_VENTE_DESC"
+			class="inputbox" readonly="false"
+		/>
+		<field
+			name="distance_vente" type="text"
+			label="COM_VELO_DISTANCE_VENTE_LABEL" description="COM_VELO_DISTANCE_VENTE_DESC"
+			class="inputbox" readonly="false"
+		/>
+		<field	name="published" type="list"
+				label="JSTATUS" description="JFIELD_PUBLISHED_DESC"
+				class="inputbox" readonly="false"
+				filter="intval" size="1" default="1"
+		>
+                    <option value="1">COM_VELO_PART_STATUS_PUBLISHED</option>
+                    <option value="0">COM_VELO_PART_STATUS_UNPUBLISHED</option>
+                    <option value="2">COM_VELO_PART_STATUS_ARCHIVED</option>
+                    <option value="-2">COM_VELO_PART_STATUS_TRASHED</option>
+		</field>
+		<field
+			name="commentaires" type="editor"
+			label="COM_VELO_COMMENTAIRES_LABEL" description="COM_VELO_COMMENTAIRES_DESC"
+			class="textarea" readonly="false"
+			size="10" default="" buttons="false" filter="raw"
+		/>
+	</fieldset>
+	<!-- models -->
+	<fieldset addfieldpath="/administrator/components/com_velo/models/fields">
+		<field
+			id="id"	name="id" type="hidden"
+			label="COM_CONTENT_ID_LABEL"
+			class="inputbox" default="0" readonly="true"
+		/>
+		<field
+			name="marque_id" type="marque"
+			label="COM_VELO_MARQUE_LABEL" description="COM_VELO_MARQUE_DESC"
+			class="inputbox required" readonly="false" required="true"
+			button_add="true" onchange="javascript:getParts();"
+		/>
+		<field
+			name="const_composant_id" type="composant"
+			label="COM_VELO_COMPOSANT_LABEL" description="COM_VELO_COMPOSANT_DESC"
+			class="inputbox" readonly="false" onchange="javascript:getParts();" zoomLevel="1,2,3,4,5"
+		/>
+		<field
+			name="photo" type="image"
+			label="COM_VELO_PHOTO_LABEL" description="COM_VELO_PHOTO_DESC"
+			width="128px" height="128px" class="fltlft img_large_preview width-40" default=""
+		/>
+	</fieldset>
+	<!-- marques -->
+	<fieldset addfieldpath="/administrator/components/com_velo/models/fields">
+		<field
+			id="id"	name="id" type="hidden"
+			label="COM_CONTENT_ID_LABEL"
+			class="inputbox" default="0" readonly="true"
+		/>
+	</fieldset>
+	<!-- const_composant -->
+	<fieldset addfieldpath="/administrator/components/com_velo/models/fields">
+		<field
+			id="id"	name="id" type="hidden"
+			label="COM_CONTENT_ID_LABEL"
+			class="inputbox" default="0" readonly="true"
+		/>
+		<field
+			name="zoomLevel" type="integer"
+			label="COM_VELO_ZOOMLEVEL_LABEL" description="COM_VELO_ZOOMLEVEL_DESC"
+			class="inputbox" default=""
+			first="0" last="4" step="1"
+		/>
+		<field
+			name="label_id" type="text"
+			label="COM_VELO_LABELID_LABEL" description="COM_VELO_LABELID_DESC"
+			class="inputbox" default=""
+		/>
+		<field
+			name="label_tr" type="text"
+			label="COM_VELO_LABELTR_LABEL" description="COM_VELO_LABELTR_DESC"
+			class="inputbox" default=""
+		/>
+	</fieldset>
+</form>

@@ -1,0 +1,155 @@
+/*
+ * Fieldset
+ */
+fieldset.adminform {
+	/*display: table;*/
+}
+fieldset.adminform div.tr {
+	width: 100%;
+	/*display: table-row;*/
+	/*margin: 0 0 5px 0;*/
+}
+fieldset.adminform div.th {
+	float: left;
+	clear: left;
+	max-width: 15%;
+	/*display: table-cell;*/
+}
+fieldset.adminform div.td {
+	display: inline-block;
+	margin: 0 2%;
+	width: 80%;
+/*	padding: 0 2% 0% 2%;*/
+}
+fieldset.adminform div.tth {
+	display: inline-block;
+	/*min-width: 110px;*/
+	max-width: 15%;
+	vertical-align: top;
+}
+fieldset.adminform div.ttd {
+	display: inline-block;
+	margin: 0 2%;
+	min-width: 30%;
+	max-width: 30%;
+}
+
+fieldset.adminform textarea, fieldset.adminform input:not([type="checkbox"]) {
+	/*min-width: 500px;*/
+	max-width: 100% ! important;
+}
+fieldset.adminform input.width_auto {
+	width: auto ! important;
+}
+fieldset.adminform input.date {
+	width: 80% ! important;
+}
+fieldset.adminform input.prix {
+	width: 10% ! important;
+	text-align: right;		/* on affiche les chiffres alignés à droite */
+}
+fieldset.adminform span {
+	color: navy;
+	/*vertical-align: middle;*/
+	text-align: middle;
+}
+fieldset.adminform span.help {
+	font-size: smaller;
+	color: grey;
+}
+/*fieldset.adminform label {
+	float: none ! important;
+	clear: none ! important;
+	display: inline;
+	vertical-align: middle;
+	text-align: middle;
+}*/
+fieldset input, li > fieldset label, fieldset textarea, fieldset select, fieldset img, fieldset button {
+	/*float: none ! important;*/
+	vertical-align: middle;         /* pour aligner les images correctement */
+}
+/*fieldset input, fieldset textarea, fieldset select, fieldset img, fieldset button {
+	margin: 0 2px ! important;
+}*/
+
+fieldset.radio {
+	display: inline-block;
+	float: none ! important;
+}
+fieldset.radio input[type="radio"] {
+	width: auto ! important;
+}
+
+fieldset input.prix {
+	text-align: right;
+	max-width: 32px;
+	margin-right: 10px;
+}
+
+ul.adminformlist-inline li {
+	display: inline;
+}
+
+fieldset.adminform div.tr > span, fieldset.adminform div.tr > div.ttd > span, fieldset.panelform li span {
+	float: left;
+	min-width: 32px;
+	margin: 5px 5px 5px 0;
+	padding: 1px;
+}
+
+fieldset.panelform label {
+	max-width: 175px ! important;
+}
+
+td, th {
+	vertical-align: top;
+}
+
+.clear {
+	clear: both;
+}
+
+.mybutton {
+	display: block;
+	/*border-right: 1px black solid;
+	border-bottom: 1px black solid;
+	border-top: 1px silver solid;
+	border-left: 1px silver solid;
+	padding: 2px 5px;
+	background: darkgray;
+	color: #FFFFFF;*/
+}
+
+/* only when display in a slider (usually inside an ul.adminformlist)*/
+ul.adminformlist div#jform_specs_div {
+    float: left;
+    margin: 5px 0;
+}
+
+#field_specs > select {
+    width: 50%;
+}
+#field_specs > input[type="text"] {
+    margin-left: 10px;      /* do not use "margin" as it will override inheritance of margin-{top,bottom} */
+    margin-right: 10px;
+    width: 40%
+}
+#field_specs a {
+    float: right;
+}
+table.specs {
+	width: 100%;
+	border-collapse: collapse;
+}
+table.specs td {
+	vertical-align: middle;
+}
+table.specs tr:nth-child(even) {
+	background-color: silver;
+}
+table.specs tr:nth-child(odd) {
+	background-color: lightgrey;
+}
+table.specs tr:hover {
+	background-color: darkgrey;
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="images"
+		label="COM_VELO_SETTINGS_IMAGE_SEARCH_ENGINE_LABEL"
+		description="COM_VELO_SETTINGS_IMAGE_SEARCH_ENGINE_DESC"
+	>
+		<field
+			name="images_provider" type="list"
+			label="COM_VELO_SETTINGS_PROVIDER_LABEL"
+			description="COM_VELO_SETTINGS_PROVIDER_DESC"
+			class="inputbox" size="1" default="1"
+		>
+			<option value="none">COM_VELO_SETTINGS_PROVIDER_NONE_LABEL</option>
+			<option value="google-cse-v1">COM_VELO_SETTINGS_PROVIDER_GOOGLECSEV1_LABEL</option>
+		</field>
+		<field
+			name="google_cse_key" type="text"
+			label="COM_VELO_SETTINGS_PROVIDER_GOOGLE_APIKEY_LABEL"
+			description="COM_VELO_SETTINGS_PROVIDER_GOOGLE_APIKEY_DESC"
+			size="100" default=""
+		/>
+		<field
+			name="google_cse_cx" type="text"
+			label="COM_VELO_SETTINGS_PROVIDER_GOOGLE_CX_LABEL"
+			description="COM_VELO_SETTINGS_PROVIDER_GOOGLE_CX_DESC"
+			size="100" default=""
+		/>
+	</fieldset>
+	<fieldset
+		name="utilisateurs"
+		label="COM_VELO_USERS_SETTINGS_LABEL"
+		description="COM_VELO_USERS_SETTINGS_DESC"
+	>
+		<field
+			name="db_host"
+			type="text"
+			label="COM_VELO_USERS_SETTINGS_DBHOST_LABEL"
+			description="COM_VELO_USERS_SETTINGS_DBHOST_DESC"
+			default=""
+		/>
+		<field
+			name="database"
+			type="text"
+			label="COM_VELO_USERS_SETTINGS_DATABASE_LABEL"
+			description="COM_VELO_USERS_SETTINGS_DATABASE_DESC"
+			default=""
+		/>
+		<field
+			name="db_username"
+			type="text"
+			label="COM_VELO_USERS_SETTINGS_DBUSERNAME_LABEL"
+			description="COM_VELO_USERS_SETTINGS_DBUSERNAME_DESC"
+			default=""
+		/>
+		<field
+			name="db_passwd"
+			type="password"
+			label="COM_VELO_USERS_SETTINGS_DBPASSWD_LABEL"
+			description="COM_VELO_USERS_SETTINGS_DBPASSWD_DESC"
+			default=""
+		/>
+		<field
+			name="table"
+			type="text"
+			label="COM_VELO_USERS_SETTINGS_TABLE_LABEL"
+			description="COM_VELO_USERS_SETTINGS_TABLE_DESC"
+			default=""
+		/>
+		<field
+			name="field_username"
+			type="text"
+			label="COM_VELO_USERS_SETTINGS_FIELDUSERNAME_LABEL"
+			description="COM_VELO_USERS_SETTINGS_FIELDUSERNAME_DESC"
+			default=""
+		/>
+		<field
+			name="field_passwd"
+			type="password"
+			label="COM_VELO_USERS_SETTINGS_FIELDPASSWORD_LABEL"
+			description="COM_VELO_USERS_SETTINGS_FIELDPASSWORD_DESC"
+			default=""
+		/>
+	</fieldset>
+	<!--<fieldset
+		name="map"
+		label="COM_VELO_MAP_SETTINGS_LABEL"
+		description="COM_VELO_MAP_SETTINGS_DESC"
+	>
+		<field
+			name="map_provider"
+			type="list"
+			label="COM_VELO_MAP_PROVIDER_LABEL"
+			description="COM_VELO_MAP_PROVIDER_DESC"
+			class="inputbox"
+			size="1" default="1"
+		>
+			<option value="googlemap-v3">COM_VELO_MAP_PROVIDER_GOOGLEMAPV3_LABEL</option>
+		</field>
+		<field
+			name="map_apikey"
+			type="text"
+			label="COM_VELO_MAP_PROVIDER_APIKEY_LABEL"
+			description="COM_VELO_MAP_PROVIDER_APIKEY_DESC"
+			size="100"
+			default=""
+		/>
+	</fieldset>-->
+	<fieldset
+                name="permissions"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                description="JCONFIG_PERMISSIONS_DESC"
+        >
+                <field
+                        name="rules"
+                        type="rules"
+                        label="JCONFIG_PERMISSIONS_LABEL"
+                        class="inputbox"
+                        validate="rules"
+                        filter="rules"
+                        component="com_velo"
+                        section="component"
+                />
+        </fieldset>
+</config>

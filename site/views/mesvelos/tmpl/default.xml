@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	permet d'affficher un nouveau type de lien de menu dans la liste 
+	dans le backend : Menu -> Menu ... -> Ajouter un lien de menu -> Type de lien de menu -> [Sélection]
+
+	le texte est à mettre dans admin/language/fr-FR/fr-FR.com_velo.sys.ini !!
+-->
+<metadata>
+	<layout title="COM_VELO_VIEW_VELO_LIST_TITLE">
+		<message>COM_VELO_VIEW_VELO_LIST_DESC</message>
+	</layout>
+</metadata>

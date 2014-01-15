@@ -1,0 +1,142 @@
+/* 
+    Document   : com_apl
+    Created on : 15 sept. 2012, 19:35:40
+    Author     : charly
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.icon-32-import {
+	background-image: url(../images/ico-128x128/import-icon.png);
+	background-size: 32px;
+}
+.icon-48-categories, .icon-48-velo {
+	background-image: url(../images/ico-48x48/monVelo.png);
+}
+.favicon {
+	width: 16px;
+	/*float: left;*/
+	vertical-align: middle;
+	margin: 0 5px 0 0;
+}
+.img_small_preview {
+	/*max-width: 40px;*/
+	max-height: 30px;
+	margin: 0 0 0 5px;
+}
+.img_medium_preview {
+	width: 64px;
+	margin: 0 10px 10px 0;
+}
+.img_large_preview {
+	/*max-width: 40px;*/
+	max-height: 128px;
+	margin: 0 10px 10px 0;
+}
+
+.clear {
+	clear: both;
+}
+.blue {
+	color: navy;
+}
+
+.left, .fltlft {
+	float: left ! important;
+}
+.right, .fltrt {
+	float: right;
+}
+.fltrt > ul {
+	display: table-row;
+	margin:0;
+	padding:0;
+}
+.fltrt > ul > li {
+	display: table-cell;
+	border-left: honeyDew solid 1px;
+	border-right: honeyDew solid 1px;
+	margin:0;
+	padding:0;
+}
+.fltrt > ul > li > a {
+	display: block;
+	padding: 0 8px;
+	font-family: "Courier New", Courier, monospace ! important;
+	font-weight: bold;
+	font-size: 14px;
+}
+.fltrt > ul > li > a:hover {
+	background-color: white;
+	color: navy;
+	text-decoration: none;
+}
+
+/**
+ * @brief	instant_help petits encarts affichant une aide rapide et instantanée
+ */
+.instant_help {
+	/*margin: 2px;
+	background-color: silver;
+	border: 1px silver dotted;*/
+	color: darkgrey;
+}
+
+.velo_details {
+	padding-top: 1%;
+}
+
+.tyre {
+	/*background: url(../images/bikester_sprite.png) 50px 0 no-repeat;
+	background-position: -2500px -677px;
+	padding-left: 50px;*/
+}
+
+ul.velo_list li.velo_list_item {
+	margin-top: 3px;
+}
+
+ul.velo_list li.velo_list_item:hover {
+	background-color: silver;
+}
+
+p.aluminium {
+	background: url(../images/ico_256x256/materiau-aluminium-256.png) no-repeat;
+	background-size: 16px;
+	padding: 0 0 0 20px;
+}
+
+p.carbon {
+	background: url(../images/ico_256x256/materiau-carbon-256.png) no-repeat;
+	background-size: 16px;
+	padding: 0 0 0 20px;
+}
+
+p.leather {
+	background: url(../images/ico_256x256/materiau-leather-256.png) no-repeat;
+	background-size: 16px;
+	padding: 0 0 0 20px;
+}
+
+p.plastic {
+	background: url(../images/ico_256x256/materiau-plastic-256.png) no-repeat;
+	background-size: 16px;
+	padding: 0 0 0 20px;
+}
+
+p.rubber {
+	background: url(../images/ico_256x256/materiau-rubber-256.png) no-repeat;
+	background-size: 16px;
+	padding: 0 0 0 20px;
+}
+
+p.steel {
+	background: url(../images/ico_256x256/materiau-steel-256.png) no-repeat;
+	background-size: 16px;
+	padding: 0 0 0 20px;
+}
+
+.component_published_0, .component_published_2 {
+	/*float: left;*/
+	opacity: 0.25;
+}

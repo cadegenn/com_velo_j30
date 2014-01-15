@@ -1,0 +1,171 @@
+@TODO
+	admin: dashboard : (dé)publier un élément directement depuis le dashboard
+	admin: gérer les doublons sur les marques/models/composants/etc...
+	admin: avant suppression d'une marque / model / etc... vérifier qu'il n'est pas utilisé par un composant / model / vélo -> avoir la possiblité de le modifier (en cas de doublon de marque/model/composant/etc...)
+	admin: exporter les tables avec leur contenu
+	admin/site: créer un objet zoomLevel avec les méthodes ->input() et ->label()
+	admin: enregistrer une copie de la page web du model directement dans la BD au cas ou l'original bouge / disparait
+	admin: ajouter la gestion des droits sur le composant
+	site: liste de vélo classée par owner / published / etc...
+	site: filtrer les vélo par rapport à leurs statut "published"
+	site: créer un type de lien style "blog" dans lequel on classe les éléments par statut "published" => d'abords tous les publiés, puis tous les stocks, puis tous les vendus
+	site: créer un type de lien style "blog" dans lequel on classe les interventions par date par vélo
+	site: gestion des interventions (maMaintenance)
+	module: afficher les vélos de l'utilisateur authentifié
+	site: commencer l'implémentation de maMaintenance
+
+@version 0.0.28 - @date 2013/10/25
+    site: ajouter une maintenance automatique pendant les actions attacher/détacher
+	site: ajout de la gestion des "specs", objet paramétrable dans la page "Proposer un model"
+
+@version 0.0.27 - @date 2013/10/25
+	admin/site: créer un objet "specs" avec les méthodes ->input() et ->label()
+	admin: ajout de la gestion des "specs", objet paramétrable pour les composants
+	site: ajout de la gestion des "specs", objet paramétrable pour les vélos
+    site: affichage des specs dans l'affichage détaillé d'un vélo
+
+@version 0.0.26 - @date 2013/10/16
+	admin: modèle: ajout d'un lien vers la page web du model
+	admin: mesVélos: affichage de la photo du modèle et de l'icône de la marque
+	admin: ajout du système de droits (ACL) sur le component com_velo. Pour celà, il faut malheureusement modifier un fichier du core joomla :
+# cd libraries/joomla/application/component
+# diff controllerform.php.bak controllerform.php
+213c213
+< 		return JFactory::getUser()->authorise('core.edit', $this->option);
+---
+> 		return JFactory::getUser()->authorise('core.edit', $this->option) || JFactory::getUser()->authorise('core.edit.own', $this->option);
+
+	bd: ajouter l'attribut "specs" sur #__velo_models, attribut au format JSON contenant tout ce dont on a besoin : size, puissance, etc...
+	bd: ajouter l'attribut "specs" sur #__velo_monComposant, attribut au format JSON contenant tout ce dont on a besoin : size, norme, etc...
+	site: monvelo: ajout d'un bouton pour attacher directement un composant (de la liste de souhait) sur un vélo
+
+@version 0.0.25 - @date 2013/09/26
+	site: monStock: n'afficher que le stock de l'utilisateur connecté
+	site: monVélo: afficher les photos des composants
+	site: monVélo: le nom du composant est un lien vers sa page web
+
+@version 0.0.24 - @date 2013/09/24
+	admin: afficher la favicon des sites des marques via l'API google
+	site: afficher la favicon des sites des marques via l'API google
+	admin: ajout des paramètres pour configurer le CSE (Custom Search Engine) de google (pour utiliser la recherche d'images)
+	site: régression: fix affichage liste de souhaits après modif status -> published
+	admin: ajout de photo pour les modèles fonctionnel
+	admin: modèles: l'URL s'ouvre dans une nouvelle fenêtre/onglet
+
+@version 0.0.23 - @date 2013/09/05
+	admin/site: modifier monComposant.status => monComposant.published dans la BD et dans les pages
+	site: monVélo : n'afficher le titre de chaque catégorie qu'une seule fois.
+
+@version 0.0.22 - @date 2013/09/05
+	site: monVélo : affichage de l'url du modèle de vélo
+	site: monComposant : affichage de l'url du composant, seulement si l'url est renseignée + ajout d'une icône.
+	site: monComposant : un composant peut-être dans la liste de souhait ET affecté à un vélo
+	site: monComposant : affichage du vélo destination pour un objet en stock ou wishlist 
+	admin: marques : ouvrir les url dans un(e) autre onglet / fenêtre
+
+@version 0.0.21 - @date 2013/04/18
+	site: suppression des div "clear" dans les listes
+	site: monVélo: remplacement du texte "date d'achat" et "prix d'achat" par des icônes
+	site: monVélo: ajout icônes matériaux
+	site: mesVélos et monStock: ajout du div autour des actions icons
+
+@version 0.0.20 - @date 2013/04/11
+	site: afficher la wishlist (dans la même page que le stock)
+	site: plus d'infos sur la page d'un composant
+	site: monVélo: afficher/éditer des commentaires
+
+@version 0.0.19 - @date 2013/04/09
+	site: afficher un "stock" ou apparaissent toutes les pièces attachées à aucun vélo
+	site: bouton pour dupliquer un composant + dans le stock, afficher le nombre de composants identiques
+	site: gestion du stock
+	site: stock factoriser les élément par nombre d'élément
+	sql: monComposant->specs devient type TEXT
+	admin/site: les objets "editor" ont un filter="raw" car sinon, l'interprétation faite par joomla est pourrie -> remplacement de charactères par d'autres
+	
+@version 0.0.18 - @date 2013/04/04
+	admin: possibilité d'ordonner les listes en cliquant sur l'intitulé de la colonne
+	site: marques: titres des colonnes cliquables pour trier
+	site: models: titres des colonnes cliquables pour trier
+	site: matériaux: titres des colonnes cliquables pour trier
+	site: types de vélo: titres des colonnes cliquables pour trier
+	site: (const_)composants: titres des colonnes cliquables pour trier
+	site: mesVélos: icône "modifier" différente selon published/unpublished
+
+@version 0.0.17 - @date 2013/04/03
+	site: ajout de la barre d'icône dans la page "Mes Vélos" avec une icône "new_bike"
+	site: icône pour détacher un élément d'un vélo (status = 0 => le met dans le stock)
+	site: affichage du stock sur la page "Mes Vélos" (créer une view dédiée ?)
+	admin: dashboard: les en-têtes de colonnes sont cliquables
+
+@version 0.0.16 - @date 2013/03/27
+	admin: renommer les MVC velo/velos en monvelo/mesvelos
+	admin: changer le status d'un vélo directement depuis la page mesvélos
+	admin: dashboard avec nb de marque / model non publiés (en attente de publication ?) + derniers vélos enregistrés
+
+@version 0.0.15 - @date 2013/03/25
+	site: demander confirmation avant de supprimer un vélo
+	site: demander confirmation avant de supprimer un composant
+
+@version 0.0.14 - @date 2013/03/25
+	site: liste des vélos afficher un icône raccourcis "ajouter un composant" sur chaque ligne de vélo
+	site: lorsque l'utilisateur ajoute une marque / un modèle / un composant, revenir à la page d'édition précédente
+	site: la page d'ajout / modification d'un vélo revient correctement à la liste des vélos
+	admin:
+	. marques: filtrer par "published"
+	. models: filtrer par "published"
+
+@version 0.0.13 - @date 2013/03/20
+	site: détails du vélo: afficher la barre d'icônes
+	site: détails du vélo: choisir un zoomLevel
+	admin: models (parts) ajouter l'icone save2copy
+
+@version 0.0.12 - @date 2013/03/18
+	site: moncomposant: utiliser AJAX/json pour filtrer dynamiquement les models
+	admin/models/fields/composant : ajout d'un filtre sur le zoomLevel. On peut le spécifier dans un form.xml : zoomLevel="1,2,3,4,5"
+	site: controller.php: amélioration des clauses WHERE pour la recherche AJAX
+	site: fix bug date sur le composant
+
+@version 0.0.11 - @date 2013/03/14
+	site: proposer un composant (const_composants) (désactivé)
+	site: proposer un model
+	site: fix bug velo pré-selectionné lors de l'ajout d'un monComposant
+
+@version 0.0.10 - @date 2013/03/13
+	site: proposer une marque
+	site: mesvélos ne liste que les vélo de l'utilisateur authentifié
+
+@version 0.0.09 - @date 2013/03/12
+	site: page de détails d'un vélo (vélo + composants)
+	site: ajout / modif vélo n'affiche le lien d'ajout de composant uniquement dans modif vélo
+
+@version 0.0.08 - @date 2013/03/08
+	site: ajout de composant sur un vélo
+	admin / site: nouveau champs de type 'vélo' avec filter="owner" pour ne lister que les vélo de l'utilisateur connecté (comparé au created_by)
+
+@version 0.0.07 - @date 2013/03/05
+	admin: page de listing des vélos
+	admin: page d'édition d'un vélo
+	site: fix bug modif vélo => lien avec le composant_id ne marchait pas
+
+@version 0.0.06 - @date 2013/02/22
+	site: page de listing des vélos de l'utilisateur
+	site: page d'ajout de vélo
+	site: page de modification de vélo
+
+@version 0.0.05 - @date 2013/02/05
+	page de gestion des modèles (parts)
+
+@version 0.0.04 - @date 2013/01/30
+	page de gestion des marques
+	la gestion du logo n'est pas prise en compte, mais l'affiche de la liste des marques affiche la favicon du site de la marque... ça suffit pour le moment.
+
+@version 0.0.03 - @date 2013/01/23
+	page de gestion des composants (const_composants)
+
+@version 0.0.02 - @date 2012/12/21
+    pages de gestion des types de vélo
+
+@version 0.0.01 - @date 2012/12/21
+    création du projet
+    page de création de matériaux
+    ajout connexion tables matériaux <--> languages

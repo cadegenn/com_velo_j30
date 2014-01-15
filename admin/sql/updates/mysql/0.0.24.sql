@@ -1,0 +1,1 @@
+ALTER TABLE  `#__velo_models` CHANGE  `photo`  `photo` LONGBLOB NULL;

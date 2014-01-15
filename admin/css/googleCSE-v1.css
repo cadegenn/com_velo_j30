@@ -1,0 +1,24 @@
+/* 
+    Document   : googleCSE-v1.css
+    Created on : 18 sept. 2013, 13:38:04
+    Author     : cadegenn
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#responseParagraph {
+	clear: both;
+}
+a.thumb {
+    float: left;
+	display: inline-block;
+	width: 32%;
+	padding: 1px;
+	margin: 1px;
+	height: 128px;
+	overflow: hidden;
+}
+a.thumb > img {
+	padding: 0;
+	margin:0;
+}

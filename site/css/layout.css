@@ -1,0 +1,21 @@
+/* 
+    Document   : layout
+    Created on : 22 mars 2013, 12:48:01
+    Author     : cadegenn
+    Description:
+        Override template's layout.css
+*/
+
+#main ul.actions {
+	max-width: 50%;
+	clear: right;
+	display: inline-block;
+}
+
+#main ul.actions img {
+	vertical-align: middle;
+}
+
+.clr {
+	clear: both;
+}
