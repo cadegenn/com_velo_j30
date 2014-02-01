@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5.0" method="upgrade">
+<extension type="component" version="3.0.0" method="upgrade">
 
     <name>COM_VELO</name>
     <!-- The following elements are optional and free of formatting constraints -->
@@ -10,7 +10,7 @@
     <copyright>Copyright Info</copyright>
     <license>GPL v3</license>
     <!--  The version string is recorded in the components table -->
-    <version>0.0.28</version>
+    <version>0.30.0</version>
     <!-- The description is optional and defaults to the name -->
     <description>COM_VELO_COMPONENT_DESCRIPTION</description>
 

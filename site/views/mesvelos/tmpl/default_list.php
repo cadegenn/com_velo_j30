@@ -2,48 +2,16 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.helper'); // load component helper first
 $article_params = JComponentHelper::getParams( 'com_content' );
-$user           = JFactory::getUser();
+$user           = $this->user; //JFactory::getUser();
+$component = ($component != '' ? $component : JRequest::getVar('option', null, 'get', 'string'));
+$view = ($view != '' ? $view : JRequest::getVar('view', null, 'get', 'string'));
+$uri	= JFactory::getURI();
 ?>
-
-<?php 
-/**
- * la barre d'icônes
- * 
- * 
- */
-// on charge les paramètres globaux des articles pour savoir quelles icônes | textes afficher
-$article_params = JComponentHelper::getParams( 'com_content' );
-// si on est dans une fenêtre popup pour imprimer, on n'affiche pas la barre d'icônes
-$canCreate      = $user->authorise('core.create',		'com_velo.'.$item->id);
-$canEdit	= 1;//	pour l'instant, seul le propriétaire du vélo a le droit d'afficher cette page.
-//					$this->item->params->get('access-edit');
-$useDefList = (($article_params->get('show_author')) or ($article_params->get('show_category')) or ($article_params->get('show_parent_category'))
-	or ($article_params->get('show_create_date')) or ($article_params->get('show_modify_date')) or ($article_params->get('show_publish_date'))
-	or ($article_params->get('show_hits')));
-$articleIconsDisplay = ($canEdit ||  $article_params->get('show_print_icon') || $article_params->get('show_email_icon') || $useDefList); ?>
-<div class="article-icons article-icons-display-<?php echo ($articleIconsDisplay ? "true" : "false"); ?>">
-<?php if (JRequest::getVar('print', 0, 'get','int') != 1) : ?>
-	<ul class="actions right">
-		<?php if ($article_params->get('show_print_icon')) : ?>
-			<li class="print-icon"><?php echo JHtml::_('icon.print_popup',  $this, $article_params); ?></li>
-		<?php endif; ?>
-		<?php if ($article_params->get('show_email_icon')) : ?>
-			<li class="email-icon"><?php echo JHtml::_('icon.email',  $this, $article_params); ?></li>
-		<?php endif; ?>
-			<?php if ($canCreate) : ?><li class="newbike-icon"><?php echo JHtml::_('icon.new_bike',  $article_params); ?></li><?php endif; ?>
-		<li>
-		<?php //echo JHtml::_('icon.print_screen',  $this->item, $article_params); ?>
-		</li>
-	</ul>
-<?php endif; ?>
-</div>
-<!--<div class="clr"></div>-->
 
 <!--<h2><?php echo JText::_('COM_VELO_MES_VELOS'); ?></h2>-->
 <div>
-<ul class='velo_list'>
+<table class='table table-hover'>
 <?php foreach($this->velos as $i => $item) : ?>
 	<?php //echo("<pre>");var_dump($item); echo("</pre>"); ?>
 	<?php
@@ -53,21 +21,42 @@ $articleIconsDisplay = ($canEdit ||  $article_params->get('show_print_icon') || 
 	$canEditOwn     = $user->authorise('core.edit.own',		'com_velo.monvelo.'.$item->id) && $item->created_by == $user->id;
 	$canChange      = $user->authorise('core.edit.state',	'com_velo.monvelo.'.$item->id) && $canCheckin;
 	?>
-	<li class='velo_list_item'>
-		<img class="favicon" src="<?php echo JHtml::_('icon.getFavicon', $item->marque_url); ?>" alt="favicon" />
-		<a href='index.php?option=com_velo&view=monvelo&id=<?php echo $item->id; ?>&Itemid=<?php echo JRequest::getVar('Itemid', 0, 'get','int'); ?>'><?php echo $item->label; ?></a>
-		<?php echo $item->marque; ?> - <?php echo $item->owner; ?> 
-		<ul class="actions fltrt">
-			<!--<li><a class="right"	href='index.php?option=com_velo&view=moncomposant&id=0&velo_id=<?php echo $item->id; ?>&Itemid=<?php echo JRequest::getVar('Itemid', 0, 'get','int'); ?>&layout=edit'>	<img src="<?php echo JURI::base(); ?>/components/com_velo/images/ico-16x16/add.png" alt="<?php echo JText::_('COM_VELO_ADD_COMPONENT'); ?>" /></a></li>-->
-			<?php if ($canCreate) : ?><li><?php echo JHtml::_('icon.add_component', $item, $article_params); ?></li><?php endif; ?>
-			<!--<li><a href='index.php?option=com_velo&view=monvelo&id=<?php echo $item->id; ?>&Itemid=<?php echo JRequest::getVar('Itemid', 0, 'get','int'); ?>&layout=edit'>				<img src="<?php echo JURI::base(); ?>/components/com_velo/images/ico-16x16/pencil.png" alt="<?php echo JText::_('JACTION_EDIT'); ?>" /></a></li>-->
-			<?php if ($canEditOwn) : ?><li><?php echo JHtml::_('icon.edit', '', 'monvelo', 'edit', $item, $article_params); ?></li><?php endif; ?>
-			<!--<li><a href='index.php?option=com_velo&view=monvelo&id=<?php echo $item->id; ?>&Itemid=<?php echo JRequest::getVar('Itemid', 0, 'get','int'); ?>&task=monvelo.supprimer&<?php echo JUtility::getToken(); ?>=1'>	<img src="<?php echo JURI::base(); ?>/components/com_velo/images/ico-16x16/delete.png" alt="<?php echo JText::_('JACTION_DELETE'); ?>" /></a></li>-->
-			<?php if ($canEditOwn) : ?><li><?php echo JHtml::_('icon.delete', '', 'monvelo', $item, $article_params); ?></li><?php endif; ?>
-		</ul>
-	</li>
+	<!--<li class='velo_list_item btn-toolbar'>-->
+	<tr><td>
+		<!--<div class="actions fltrt btn-group pull-right">
+			<!--<?php if ($canCreate) : ?><span class="btn"><?php echo JHtml::_('icon.add_component', $item, $article_params); ?></span><?php endif; ?>-->
+			<!--<?php if ($canCreate) { echo JHtml::_('button.link', 'plus-sign',		'action', 'index.php?option=com_velo&view=moncomposant&velo_id='.$item->id.'&layout=edit&return='.base64_encode($uri)); } ?>
+			<!--<?php if ($canEditOwn) : ?><span class="btn"><?php echo JHtml::_('icon.edit', '', 'monvelo', 'edit', $item, $article_params); ?></span><?php endif; ?>-->
+			<!--<?php if ($canEditOwn) { echo JHtml::_('button.link', 'pencil',			'action', 'index.php?option='.$component.'&view=monvelo&layout=edit&id='.$item->id.'&return='.base64_encode($uri)); } ?>
+			<!--<?php if ($canEditOwn) : ?><span class="btn"><?php echo JHtml::_('icon.delete', '', 'monvelo', $item, $article_params); ?></span><?php endif; ?>-->
+			<!--<?php if ($canEditOwn) { echo JHtml::_('button.link', 'remove-circle',	'action', 'index.php?option='.$component.'&view=monvelo&Itemid='.$Itemid.'&id='.$item->id.'&task='.$view.'.supprimer&'.JUtility::getToken().'=1&return='.base64_encode($uri)); } ?>
+		</div>-->
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				Action <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<!--<li><?php if ($canCreate) { echo JHtml::_('button.link', 'plus-sign',		'action', 'index.php?option=com_velo&view=moncomposant&velo_id='.$item->id.'&layout=edit&return='.base64_encode($uri)); } ?></li>
+				<li><?php if ($canEditOwn) { echo JHtml::_('button.link', 'pencil',			'action', 'index.php?option='.$component.'&view=monvelo&layout=edit&id='.$item->id.'&return='.base64_encode($uri)); } ?></li>
+				<li class="divider"></li>
+				<li><?php if ($canEditOwn) { echo JHtml::_('button.link', 'remove-circle',	'action', 'index.php?option='.$component.'&view=monvelo&Itemid='.$Itemid.'&id='.$item->id.'&task='.$view.'.supprimer&'.JUtility::getToken().'=1&return='.base64_encode($uri)); } ?></li>
+				-->
+				<li><?php if ($canCreate) { echo JHtml::_('link', 'index.php?option=com_velo&view=moncomposant&velo_id='.$item->id.'&layout=edit&return='.base64_encode($uri), 'add component'); } ?></li>
+				<li><?php if ($canEditOwn) { echo JHtml::_('link', 'index.php?option='.$component.'&view=monvelo&layout=edit&id='.$item->id.'&return='.base64_encode($uri), 'edit bike'); } ?></li>
+				<li class="divider"></li>
+				<li><?php if ($canEditOwn) { echo JHtml::_('link', 'index.php?option='.$component.'&view=monvelo&Itemid='.$Itemid.'&id='.$item->id.'&task='.$view.'.supprimer&'.JUtility::getToken().'=1&return='.base64_encode($uri), 'remove bike'); } ?></li>
+			</ul>
+		</div>
+		<a class="ui_element" href='index.php?option=com_velo&view=monvelo&id=<?php echo $item->id; ?>&Itemid=<?php echo JRequest::getVar('Itemid', 0, 'get','int'); ?>'>
+			<img class="favicon" src="<?php echo JHtml::_('icon.getFavicon', $item->marque_url); ?>" alt="favicon" />
+			<p>
+				<?php echo $item->label; ?>
+				<?php if ($item->owner): ?><small><br /><?php echo $item->owner; ?></small><?php endif; ?>
+			</p>
+		</a>
+	</td></tr>
 <?php endforeach; ?>
-</ul>
+</table>
 </div>
 
 <!--<h2><?php echo JText::_('COM_VELO_MON_STOCK'); ?></h2>

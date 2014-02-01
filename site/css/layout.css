@@ -6,14 +6,12 @@
         Override template's layout.css
 */
 
-#main ul.actions {
-	max-width: 50%;
-	clear: right;
-	display: inline-block;
+ul.actions {
+	list-style: none;
 }
-
-#main ul.actions img {
-	vertical-align: middle;
+span.action {
+	font-size: 24px;
+	color: black;
 }
 
 .clr {

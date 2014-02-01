@@ -14,6 +14,10 @@
 	module: afficher les vélos de l'utilisateur authentifié
 	site: commencer l'implémentation de maMaintenance
 
+@version 0.0.29 - @date
+	site: ajout des classes bootstrap à la view MesVelos
+	site: remplacement des icônes d'action dans MesVélos par les glyphs de bootstrap
+
 @version 0.0.28 - @date 2013/10/25
     site: ajouter une maintenance automatique pendant les actions attacher/détacher
 	site: ajout de la gestion des "specs", objet paramétrable dans la page "Proposer un model"

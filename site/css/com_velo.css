@@ -93,7 +93,8 @@
 }
 
 ul.velo_list li.velo_list_item {
-	margin-top: 3px;
+	/*margin-top: 3px;*/
+	list-style: none;
 }
 
 ul.velo_list li.velo_list_item:hover {
